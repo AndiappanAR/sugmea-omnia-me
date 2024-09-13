@@ -36,6 +36,9 @@ const Header = (props: HeaderProps): JSX.Element => {
   const { pathname, asPath, query } = router;
   const { sitecoreContext } = useSitecoreContext();
 
+  console.log("OMNIA : HeaderProps >>>>")
+  console.log(props)
+
   return (
     <HeaderContent
       pathname={pathname}

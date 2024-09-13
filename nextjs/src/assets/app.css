@@ -53,3 +53,8 @@ a:hover {
 /* 8. Tailwind utilities */
 
 @import 'tailwindcss/utilities';
+
+@import 'css/components/Navigation/Header.css';
+@import 'css/components/Navigation/Footer.css';
+@import 'css/components/PageContent/FullImageSection.css';
+@import 'css/components/PageContent/ThreeColumnsSection.css';

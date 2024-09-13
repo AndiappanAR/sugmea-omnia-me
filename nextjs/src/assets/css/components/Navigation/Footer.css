@@ -1,0 +1,98 @@
+.footer a {
+  color: #d3d3d3; /* text-gray-lighter */
+}
+.footer a:hover {
+  color: #ffcc00; /* hover:text-yellow */
+}
+
+.footer-banner {
+  display: flex; /* flex--sb (Assumed: Flexbox justify-content: space-between) */
+  justify-content: space-between;
+
+  padding-top: 1.5rem; /* py-6 */
+  padding-bottom: 1.5rem;
+  padding-left: 0; /* px-0 */
+  padding-right: 0;
+}
+
+.footer-content {
+  display: flex; /* flex--fs-sb-w (Assumed: Flexbox with flex-start, space-between and wrapping) */
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: flex-start;
+
+  height: 100%; /* h-full */
+  padding-top: 2.5rem; /* py-10 */
+  padding-bottom: 2.5rem;
+  padding-left: 1rem; /* px-4 */
+  padding-right: 1rem;
+  border-top: 1px solid #ffcc00; /* border-t border-b border-solid border-yellow */
+  border-bottom: 1px solid #ffcc00;
+  background: none;
+
+}
+
+@media (min-width: 768px) {
+  .footer-content {
+    padding-left: 2rem; /* md:px-8 */
+    padding-right: 2rem;
+  }
+}
+
+.footer-content-col {
+  list-style: none; /* list-none */
+  padding-left: 0.5rem; /* px-2 */
+  padding-right: 0.5rem;
+  min-width: 140px;
+}
+
+.footer-content-col li {
+  font-size: 0.875rem; /* text-sm */
+  margin-top: 0.5rem; /* my-2 */
+  margin-bottom: 0.5rem;
+}
+
+.footer-content-col li:first-child {
+  font-weight: bold; /* font-bold */
+  color: #ffcc00; /* text-yellow */
+}
+
+.footer-content-col li svg {
+  color: #d3d3d3; /* text-gray-lighter */
+  margin-right: 0.25rem; /* mr-1 */
+}
+
+.footer-legal {
+  display: flex; /* flex--sb (Assumed: Flexbox justify-content: space-between) */
+  justify-content: space-between;
+  align-items: flex-start;
+
+  font-size: 0.875rem; /* text-sm */
+  color: #d3d3d3; /* text-gray-lighter */
+}
+
+.footer-legal-links {
+  display: flex; /* flex--fs-w (Assumed: Flexbox with flex-start and wrapping) */
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
+  width: 100%; /* w-full */
+  color: #d3d3d3; /* text-gray-lighter */
+}
+
+.footer-legal-links > div {
+  width: 100%; /* w-full */
+  padding-right: 2rem; /* pr-8 */
+  padding-top: 1rem; /* pt-4 */
+}
+
+@media (min-width: 768px) {
+  .footer-legal-links > div {
+    width: auto; /* md:w-auto */
+    padding-bottom: 1rem; /* md:pb-4 */
+  }
+}
+
+.footer-legal-links > div:last-child {
+  padding-bottom: 1rem; /* pb-4 */
+}

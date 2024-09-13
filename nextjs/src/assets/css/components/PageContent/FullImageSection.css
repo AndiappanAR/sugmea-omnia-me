@@ -1,0 +1,76 @@
+.full-image-section {
+  position: relative;
+  background-color: white;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 7em 0;
+  box-shadow: 0 0 10px rgba(23, 23, 23, 0.3);
+}
+
+.full-image-section img {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.full-image-section-left .full-image-section-content {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.full-image-section-right .full-image-section-content {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.full-image-section-content {
+  position: relative;
+  height: 100%;
+  z-index: 10;
+}
+
+.content-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: #f8f8f8;
+  padding: 3em;
+  max-width: 700px;
+  box-shadow: 0 0 20px rgba(23, 23, 23, 0.3);
+}
+
+.content-card h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: black;
+  margin: 0;
+}
+
+.content-card h5 {
+  color: blue;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 500;
+  margin: 0 0 20px;
+}
+
+.content-card > div {
+  font-size: 0.875rem;
+  margin: 20px 0 30px;
+  line-height: 1.4;
+  max-width: 500px;
+}
+
+.full-image-cta-section {
+  height: 24rem; /* 96px equivalent in rem */
+}

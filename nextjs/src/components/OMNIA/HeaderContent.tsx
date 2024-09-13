@@ -17,8 +17,8 @@ const HeaderContent = (props: HeaderContentProps): JSX.Element => {
   const router = useRouter();
   const [languageLabels, setLanguageLabels] = useState<string[]>([]);
 
-  console.log("HeaderContentProps >>>>")
-  console.log(props)
+  console.log('HeaderContentProps >>>>');
+  console.log(props);
 
   const sxaStyles = `${props.params?.styles || ''}`;
 
@@ -29,7 +29,7 @@ const HeaderContent = (props: HeaderContentProps): JSX.Element => {
   const languageList = props.sitecoreContext['Languages'] as NodeJS.Dict<string | string>[];
 
   useEffect(() => {
-    let labels:string[] = [];
+    let labels: string[] = [];
     labels = languageList.map((language) => languageNames.of(language['Name']!)) as string[];
 
     setLanguageLabels(labels);
@@ -55,7 +55,8 @@ const HeaderContent = (props: HeaderContentProps): JSX.Element => {
   const languageSelector = languageList && languageLabels.length > 0 && (
     <select
       onChange={(e) => changeLanguage(e.currentTarget.value)}
-      className="languagePicker"
+      className="bg-gray-50 border languagePicker border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5
+       dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 float-right"
       value={props.sitecoreContext.language}
     >
       {languageList.map((language, index) => (
@@ -79,17 +80,15 @@ const HeaderContent = (props: HeaderContentProps): JSX.Element => {
 
   return (
     <>
-     <h1 className="text-3xl font-bold underline bg-red-800">
-      Hello world!
-    </h1>
-      <div className={`header-eyebrow ${sxaStyles}`}>
+      <div className="header_container w-full overflow-x-clip z-[101] transition-all duration-500  fixed top-0 left-0  ">
+        {/* <div className={`header-eyebrow ${sxaStyles}`}>
         <div className="content">
           {languageSelector}
           {links}
         </div>
+      </div> */}
+        <Placeholder name="jss-header-content" rendering={props.rendering} />
       </div>
-      <Placeholder name="jss-header-content" rendering={props.rendering} />
-   
     </>
   );
 };
