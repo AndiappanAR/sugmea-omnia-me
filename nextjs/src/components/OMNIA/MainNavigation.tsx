@@ -2,7 +2,6 @@ import Link from 'next/link';
 import React, { useState } from 'react';
 import { ImageField, Image } from '@sitecore-jss/sitecore-jss-nextjs';
 import { ComponentProps } from 'lib/component-props';
-import { useI18n } from 'next-localization';
 
 export type MainNavigationProps = ComponentProps & {
   fields: {
@@ -40,71 +39,12 @@ export type MainNavigationProps = ComponentProps & {
 
 // From tailwind
 
-import {
-  Dialog,
-  DialogPanel,
-  Disclosure,
-  DisclosureButton,
-  DisclosurePanel,
-  Popover,
-  PopoverButton,
-  PopoverGroup,
-  PopoverPanel,
-} from '@headlessui/react';
-import {
-  ArrowPathIcon,
-  Bars3Icon,
-  ChartPieIcon,
-  CursorArrowRaysIcon,
-  FingerPrintIcon,
-  SquaresPlusIcon,
-  XMarkIcon,
-} from '@heroicons/react/24/outline';
-import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid';
-
-const products = [
-  {
-    name: 'Analytics',
-    description: 'Get a better understanding of your traffic',
-    href: '#',
-    icon: ChartPieIcon,
-  },
-  {
-    name: 'Engagement',
-    description: 'Speak directly to your customers',
-    href: '#',
-    icon: CursorArrowRaysIcon,
-  },
-  {
-    name: 'Security',
-    description: 'Your customers’ data will be safe and secure',
-    href: '#',
-    icon: FingerPrintIcon,
-  },
-  {
-    name: 'Integrations',
-    description: 'Connect with third-party tools',
-    href: '#',
-    icon: SquaresPlusIcon,
-  },
-  {
-    name: 'Automations',
-    description: 'Build strategic funnels that will convert',
-    href: '#',
-    icon: ArrowPathIcon,
-  },
-];
-const callsToAction = [
-  { name: 'Watch demo', href: '#', icon: PlayCircleIcon },
-  { name: 'Contact sales', href: '#', icon: PhoneIcon },
-];
+import { Dialog, DialogPanel, PopoverGroup } from '@headlessui/react';
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 
 // From tailwind
 
 const MainNavigation = (props: MainNavigationProps): JSX.Element => {
-  const [navbarOpen, setNavbarOpen] = useState(false);
-  const { t } = useI18n();
-
   console.log('MainNavigationProps >>>>');
   console.log(props);
 
@@ -112,7 +52,7 @@ const MainNavigation = (props: MainNavigationProps): JSX.Element => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   // From tailwind
 
-  const sxaStyles = `${props.params?.styles || ''}`;
+  // const sxaStyles = `${props.params?.styles || ''}`;
 
   return (
     <>
@@ -145,6 +85,7 @@ const MainNavigation = (props: MainNavigationProps): JSX.Element => {
               href={item.field?.jsonValue?.value?.href ?? '#'}
               prefetch={false}
               className="text-sm font-semibold leading-6 text-white"
+              key={index}
             >
               {item.displayName}
             </Link>
@@ -182,6 +123,7 @@ const MainNavigation = (props: MainNavigationProps): JSX.Element => {
                     href={item.field?.jsonValue?.value?.href ?? '#'}
                     prefetch={false}
                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7  text-gray-400 hover:bg-red-300"
+                    key={index}
                   >
                     {item.displayName}
                   </Link>

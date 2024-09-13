@@ -31,8 +31,7 @@ export class DictionaryServiceFactory {
             502, 503, 504, 520, 521, 522, 523, 524, 'ECONNRESET', 'ETIMEDOUT' and 'EPROTO' . You can use this class or your own implementation of `RetryStrategy`.
           */
           retries: (process.env.GRAPH_QL_SERVICE_RETRIES &&
-            parseInt(process.env.GRAPH_QL_SERVICE_RETRIES, 10)) as number
-          
+            parseInt(process.env.GRAPH_QL_SERVICE_RETRIES, 10)) as number,
         })
       : new RestDictionaryService({
           apiHost: config.sitecoreApiHost,
