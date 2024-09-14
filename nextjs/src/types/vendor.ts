@@ -5,6 +5,7 @@ export type Vendor = {
     Name: Field<string>;
     Level: Field<string>;
     Logo: ImageField;
+    randomRating:string
   };
   url: string;
 };

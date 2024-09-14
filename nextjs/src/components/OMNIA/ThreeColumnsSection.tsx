@@ -150,7 +150,7 @@ const ThreeColumnsSection = ({ fields, params }: ThreeColumnsSectionProps): JSX.
             </article>
           </div>
         </div>
-      </div>
+      </div>      
     </section>
   );
 };
