@@ -1,98 +1,170 @@
 .form.item-grid.sessions-filters {
-  @apply space-y-5;
+  margin-bottom: 1.25rem; /* Equivalent to space-y-5 */
+}
 
-  .filters-row {
-    @apply w-full px-10 flex-wrap overflow-hidden text-sm space-y-5 hidden;
-    @apply md:space-y-0;
+.form.item-grid.sessions-filters .filters-row {
+  width: 100%;
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+  flex-wrap: wrap;
+  overflow: hidden;
+  font-size: 0.875rem; /* text-sm */
+  margin-bottom: 1.25rem; /* Equivalent to space-y-5 */
+  display: none;
+}
 
-    .filters-col {
-      @apply w-full overflow-hidden;
-      @apply md:w-1/2;
-
-      &.sort-by-col {
-        @apply flex justify-start;
-        @apply md:justify-end;
-
-        .dropdown-filter.sort-by-dropdown {
-          @apply w-36;
-          @apply md:w-36;
-        }
-      }
-
-      &.sessions-count-col {
-        @apply flex justify-between;
-        @apply md:justify-start;
-
-        .sessions-count {
-          @apply pt-1;
-          @apply md:pt-2;
-        }
-
-        .checkbox-label.space-available-checkbox {
-          @apply inline-flex items-center w-auto;
-
-          input[type="checkbox"] {
-            @apply mt-0;
-          }
-
-          .label-text {
-            @apply ml-2 text-sm;
-          }
-        }
-      }
-
-      &.pager-col {
-        @apply flex pt-4 justify-start;
-        @apply md:pt-0 md:justify-end;
-
-        .pager {
-          @apply inline-flex rounded-md font-medium;
-
-          .pager-item {
-            @apply px-4 py-2;
-
-            &.hiddeable {
-              @apply hidden;
-              @apply md:inline-flex;
-            }
-
-            &.ellipsis-item {
-              @apply px-0;
-            }
-
-            &.active {
-              @apply bg-blue-light text-white-light;
-            }
-
-            &.previous-page,
-            &.next-page {
-              span {
-                @apply sr-only;
-              }
-
-              svg {
-                @apply h-5 w-5;
-              }
-            }
-
-            &.previous-page {
-              @apply rounded-l-md;
-            }
-
-            &.next-page {
-              @apply rounded-r-md;
-            }
-          }
-
-          a.pager-item {
-            @apply hover:bg-gray-light;
-          }
-
-          span.pager-item {
-            @apply cursor-default;
-          }
-        }
-      }
-    }
+@media (min-width: 768px) {
+  .form.item-grid.sessions-filters .filters-row {
+    margin-bottom: 0; /* md:space-y-0 */
   }
+}
+
+.form.item-grid.sessions-filters .filters-col {
+  width: 100%;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .form.item-grid.sessions-filters .filters-col {
+    width: 50%; /* md:w-1/2 */
+  }
+}
+
+.form.item-grid.sessions-filters .filters-col.sort-by-col {
+  display: flex;
+  justify-content: flex-start;
+}
+
+@media (min-width: 768px) {
+  .form.item-grid.sessions-filters .filters-col.sort-by-col {
+    justify-content: flex-end;
+  }
+}
+
+.form.item-grid.sessions-filters .filters-col.sort-by-col .dropdown-filter.sort-by-dropdown {
+  width: 9rem; /* w-36 */
+}
+
+@media (min-width: 768px) {
+  .form.item-grid.sessions-filters .filters-col.sort-by-col .dropdown-filter.sort-by-dropdown {
+    width: 9rem; /* md:w-36 */
+  }
+}
+
+.form.item-grid.sessions-filters .filters-col.sessions-count-col {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media (min-width: 768px) {
+  .form.item-grid.sessions-filters .filters-col.sessions-count-col {
+    justify-content: flex-start;
+  }
+}
+
+.form.item-grid.sessions-filters .filters-col.sessions-count-col .sessions-count {
+  padding-top: 0.25rem;
+}
+
+@media (min-width: 768px) {
+  .form.item-grid.sessions-filters .filters-col.sessions-count-col .sessions-count {
+    padding-top: 0.5rem; /* md:pt-2 */
+  }
+}
+
+.form.item-grid.sessions-filters .filters-col.sessions-count-col .checkbox-label.space-available-checkbox {
+  display: inline-flex;
+  align-items: center;
+  width: auto;
+}
+
+.form.item-grid.sessions-filters .filters-col.sessions-count-col .checkbox-label.space-available-checkbox input[type="checkbox"] {
+  margin-top: 0;
+}
+
+.form.item-grid.sessions-filters .filters-col.sessions-count-col .checkbox-label.space-available-checkbox .label-text {
+  margin-left: 0.5rem; /* ml-2 */
+  font-size: 0.875rem; /* text-sm */
+}
+
+.form.item-grid.sessions-filters .filters-col.pager-col {
+  display: flex;
+  padding-top: 1rem;
+  justify-content: flex-start;
+}
+
+@media (min-width: 768px) {
+  .form.item-grid.sessions-filters .filters-col.pager-col {
+    padding-top: 0;
+    justify-content: flex-end;
+  }
+}
+
+.form.item-grid.sessions-filters .filters-col.pager-col .pager {
+  display: inline-flex;
+  border-radius: 0.375rem; /* rounded-md */
+  font-weight: 500; /* font-medium */
+}
+
+.form.item-grid.sessions-filters .filters-col.pager-col .pager .pager-item {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.form.item-grid.sessions-filters .filters-col.pager-col .pager .pager-item.hiddeable {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .form.item-grid.sessions-filters .filters-col.pager-col .pager .pager-item.hiddeable {
+    display: inline-flex;
+  }
+}
+
+.form.item-grid.sessions-filters .filters-col.pager-col .pager .pager-item.ellipsis-item {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.form.item-grid.sessions-filters .filters-col.pager-col .pager .pager-item.active {
+  background-color: #b3d7ff; /* Equivalent to bg-blue-light */
+  color: #f0f7ff; /* Equivalent to text-white-light */
+}
+
+.form.item-grid.sessions-filters .filters-col.pager-col .pager .pager-item.previous-page span,
+.form.item-grid.sessions-filters .filters-col.pager-col .pager .pager-item.next-page span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.form.item-grid.sessions-filters .filters-col.pager-col .pager .pager-item.previous-page svg,
+.form.item-grid.sessions-filters .filters-col.pager-col .pager .pager-item.next-page svg {
+  height: 1.25rem; /* h-5 */
+  width: 1.25rem; /* w-5 */
+}
+
+.form.item-grid.sessions-filters .filters-col.pager-col .pager .pager-item.previous-page {
+  border-top-left-radius: 0.375rem; /* rounded-l-md */
+  border-bottom-left-radius: 0.375rem;
+}
+
+.form.item-grid.sessions-filters .filters-col.pager-col .pager .pager-item.next-page {
+  border-top-right-radius: 0.375rem; /* rounded-r-md */
+  border-bottom-right-radius: 0.375rem;
+}
+
+.form.item-grid.sessions-filters .filters-col.pager-col .pager a.pager-item:hover {
+  background-color: #e5e7eb; /* hover:bg-gray-light */
+}
+
+.form.item-grid.sessions-filters .filters-col.pager-col .pager span.pager-item {
+  cursor: default;
 }

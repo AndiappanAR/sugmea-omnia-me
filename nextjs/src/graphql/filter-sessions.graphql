@@ -1,0 +1,85 @@
+query(
+  $language: String!
+  $orderByField: String!
+  $orderDirection: OrderByDirection = ASC
+  $searchKeyword: String = ""
+) {
+  search(
+    first: 100
+    orderBy: { name: $orderByField, direction: $orderDirection }
+    where: {
+      AND: [
+        {
+          name: "_path"
+          value: "{68DC89A4-1B04-59A8-9C4E-3B49D6C61052}"
+          operator: CONTAINS
+        }
+        { name: "_language", value: $language }
+        {
+          OR: [
+            { name: "name", value: $searchKeyword, operator: CONTAINS }
+            #{ name: "pageTitle", value: $searchKeyword, operator: CONTAINS }
+            #{ name: "Description", value: $searchKeyword, operator: CONTAINS }
+          ]
+        }
+      ]
+    }
+  ) {
+    total
+    pageInfo {
+      endCursor
+    }
+    results {
+      ... on Session {
+        itemName: name
+        name: field(name: "name") {
+          value
+        }
+        premium {
+          value
+        }
+        url {
+          path
+        }
+        image {
+          jsonValue
+        }
+        day {
+          ... on MultilistField {
+            targetItems {
+              name: field(name: "name") {
+                value
+              }
+            }
+          }
+        }
+        timeslots {
+          ... on MultilistField {
+            targetItems {
+              name: field(name: "name") {
+                value
+              }
+            }
+          }
+        }
+        speakers {
+          ... on MultilistField {
+            targetItems {
+              ... on Speaker {
+                name: field(name: "name") {
+                  value
+                }
+                url {
+                  path
+                }
+                role {
+                  value
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

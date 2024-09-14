@@ -11,7 +11,7 @@ const HeroSectionCta = ({ fields, params }: HeroSectionCtaProps): JSX.Element =>
   const sxaStyles = `${params?.styles || ''}`;
 
   return (
-    <div className={`btn-area ${sxaStyles}`}>
+    <div className={`text-center btn-area ${sxaStyles}`}>
       <Link field={fields.Link} className="btn-main" />
     </div>
   );
