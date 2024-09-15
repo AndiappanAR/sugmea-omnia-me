@@ -114,8 +114,9 @@ const SessionsGrid = (props: SessionsGridProps): JSX.Element => {
   
     `;
     setNoResults(false);
+    noResults;
 
-    let queryVariables = {
+    const queryVariables = {
       language: 'en',
       orderByField: 'name',
       orderDirection: 'ASC',

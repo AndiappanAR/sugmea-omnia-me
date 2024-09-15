@@ -1,7 +1,7 @@
 import { withDatasourceCheck } from '@sitecore-jss/sitecore-jss-nextjs';
 
-const HeroSectionCta = ({}: any): JSX.Element => {
+const HeroSectionCta = ({}): JSX.Element => {
   return <></>;
 };
 
-export const Default = withDatasourceCheck()<any>(HeroSectionCta);
+export const Default = withDatasourceCheck()(HeroSectionCta);

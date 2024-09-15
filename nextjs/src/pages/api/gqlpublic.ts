@@ -7,7 +7,11 @@ const gqlpublicApi = async (req: NextApiRequest, res: NextApiResponse): Promise<
     apiKey: config.sitecoreApiKey,
   });
 
-  const { componentQuery, queryVariables, captchaResponse } = req.body;
+  const {
+    componentQuery,
+    queryVariables,
+    //,     captchaResponse
+  } = req.body;
 
   console.log('ComponentQuery config:SessionGrid');
   console.log(config.sitecoreApiKey + config.graphQLEndpoint);

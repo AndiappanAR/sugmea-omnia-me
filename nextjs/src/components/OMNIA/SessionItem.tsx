@@ -1,8 +1,8 @@
 import { CSSProperties } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
 import { Text } from '@sitecore-jss/sitecore-jss-nextjs';
-import { faCalendar, faClock, faStar, faUser } from '@fortawesome/free-solid-svg-icons';
+// import { faCalendar, faClock, faStar, faUser } from '@fortawesome/free-solid-svg-icons';
 import { getSessionTime } from '../../helpers/DateHelper';
 import { GraphQLSession } from 'src/types/session';
 
@@ -18,11 +18,11 @@ const SessionItem = (props: SessionItemProps): JSX.Element => {
         }
       : {};
 
-  const featuredIcon = props.session.premium?.value && (
-    <div className="session-featured" title="Premium">
-      <FontAwesomeIcon className="icon-yellow" icon={faStar} />
-    </div>
-  );
+  // const featuredIcon = props.session.premium?.value && (
+  //   <div className="session-featured" title="Premium">
+  //     <FontAwesomeIcon className="icon-yellow" icon={faStar} />
+  //   </div>
+  // );
 
   const day =
     props.session.day?.targetItems &&

@@ -4,7 +4,7 @@ import {
   RichText,
   Image,
   ImageField,
-  Placeholder,
+  //Placeholder,
   withDatasourceCheck,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import { ComponentProps } from 'lib/component-props';

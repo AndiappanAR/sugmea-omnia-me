@@ -19,45 +19,47 @@ const VendorsGrid = (props: VendorsGridProps): JSX.Element => {
   const { sitecoreContext } = useSitecoreContext();
 
   const isPageEditing = sitecoreContext.pageState === LayoutServicePageState.Edit;
-  const hasVendors = !!props.fields;
+  const hasVendors = !!props?.fields;
 
   !hasVendors && console.warn('Missing Datasource Item');
 
-  const businessLogicForRating = (str:any) => {
-    return ('*'.repeat(str)).substring(0, 5) ;
+  const businessLogicForRating = (str: number) => {
+    return '*'.repeat(str).substring(0, 5);
   };
 
   const pageEditingMissingDatasource = !hasVendors && isPageEditing && (
     <p>Missing Datasource Item</p>
   );
 
-  
-
   const vendors =
     props.fields?.items &&
-    props.fields.items.map((vendor, index) => (
-      
-      <Link key={index} href={vendor.url} passHref className="grid-item">
-        <div className="item-details"></div>
-        <li key={vendor.fields.Name.value}>
-          <div className="flex items-center gap-x-6">
-            <Image
-              field={vendor.fields.Logo}
-              alt={vendor.fields.Name.value}
-              className="border border-gray-400 h-16 w-16 rounded-full"
-            />
+    props.fields.items.map(
+      (vendor, index) =>
+        vendor?.fields?.Name && (
+          <Link key={index} href={vendor?.url} passHref className="grid-item">
+            <div className="item-details"></div>
+            <li key={vendor?.fields?.Name?.value}>
+              <div className="flex items-center gap-x-6">
+                <Image
+                  field={vendor?.fields?.Logo}
+                  alt={vendor?.fields?.Name?.value}
+                  className="border border-gray-400 h-16 w-16 rounded-full"
+                />
 
-            <div>
-              <h3 className="text-base font-semibold leading-7 tracking-tight text-gray-900">
-                <Text field={vendor.fields.Name} />
-              </h3>
-              <p className="text-base font-semibold leading-6 text-indigo-600">Business logics : {businessLogicForRating(vendor.fields.Name.value.length) }</p>
-             
-            </div>
-          </div>
-        </li>
-      </Link>
-    ));
+                <div>
+                  <h3 className="text-base font-semibold leading-7 tracking-tight text-gray-900">
+                    <Text field={vendor?.fields?.Name} />
+                  </h3>
+
+                  <p className="text-base font-semibold leading-6 text-indigo-600">
+                    Business logics : {businessLogicForRating(vendor?.fields?.Name?.value?.length)}
+                  </p>
+                </div>
+              </div>
+            </li>
+          </Link>
+        )
+    );
 
   const vendorsGrid = hasVendors && (
     <section className="section px-8 py-8 border border-gray-400">
@@ -68,12 +70,11 @@ const VendorsGrid = (props: VendorsGridProps): JSX.Element => {
               Meet our elite vendors
             </h2>
             <br></br>
-            <hr/>
+            <hr />
             <p className="mt-6 text-lg leading-8 text-gray-600">
               Libero fames augue nisl porttitor nisi, quis. Id ac elit odio vitae elementum enim
               vitae ullamcorper suspendisse.
             </p>
-           
           </div>
           <ul
             role="list"
