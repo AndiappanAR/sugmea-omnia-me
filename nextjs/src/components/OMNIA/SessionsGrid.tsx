@@ -3,8 +3,6 @@ import { ComponentProps } from 'lib/component-props';
 import { GraphQLSession } from 'src/types/session';
 import SessionItem from './SessionItem';
 import { useState } from 'react';
-import GoogleCaptchaWrapper from '../../google-captcha-wrapper';
-import axios from 'axios';
 
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
@@ -36,10 +34,7 @@ const SessionsGrid = (props: SessionsGridProps): JSX.Element => {
       return;
     }
 
-    
-
-    let result = await executeRecaptcha('enquiryFormSubmit').then(async (gRecaptchaToken) => {
-      
+    await executeRecaptcha('enquiryFormSubmit').then(async (gRecaptchaToken) => {
       console.log('ReCAPTCHA : key' + gRecaptchaToken);
 
       const componentQuery = `query(
@@ -142,7 +137,7 @@ const SessionsGrid = (props: SessionsGridProps): JSX.Element => {
       const dataToSend = {
         componentQuery: componentQuery,
         queryVariables: queryVariables,
-        gRecaptchaToken: gRecaptchaToken
+        gRecaptchaToken: gRecaptchaToken,
       };
 
       const response = await fetch('/api/gqlpublic', {
@@ -244,7 +239,10 @@ const SessionsGrid = (props: SessionsGridProps): JSX.Element => {
         {sessionsGrid}
         {pageEditingMissingDatasource}
       </div>
-      <script src="https://www.google.com/recaptcha/api.js?render=6LcG3e4aAAAAAB4LA6IsLetrSnrsX_9_YHkd3epL"></script>
+      <script
+        async
+        src="https://www.google.com/recaptcha/api.js?render=6LcG3e4aAAAAAB4LA6IsLetrSnrsX_9_YHkd3epL"
+      ></script>
     </>
   );
 };
