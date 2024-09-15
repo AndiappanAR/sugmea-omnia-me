@@ -6,6 +6,7 @@ import Head from 'next/head';
 import { Placeholder, LayoutServiceData, Field, HTMLLink } from '@sitecore-jss/sitecore-jss-nextjs';
 import config from 'temp/config';
 import Scripts from 'src/Scripts';
+import GoogleCaptchaWrapper from './google-captcha-wrapper';
 
 // Prefix public assets with a public URL to enable compatibility with Sitecore Experience Editor.
 // If you're not supporting the Experience Editor, you can remove this.
@@ -43,9 +44,14 @@ const Layout = ({ layoutData, headLinks }: LayoutProps): JSX.Element => {
         <header>
           <div id="header">{route && <Placeholder name="headless-header" rendering={route} />}</div>
         </header>
-        <main>
-          <div id="content">{route && <Placeholder name="headless-main" rendering={route} />}</div>
-        </main>
+        <GoogleCaptchaWrapper>
+          <main>
+            <div id="content">
+              {route && <Placeholder name="headless-main" rendering={route} />}
+            </div>
+          </main>
+        </GoogleCaptchaWrapper>
+
         <footer>
           <div id="footer">{route && <Placeholder name="headless-footer" rendering={route} />}</div>
         </footer>

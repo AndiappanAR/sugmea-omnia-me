@@ -2,8 +2,11 @@ import { LayoutServicePageState, useSitecoreContext } from '@sitecore-jss/siteco
 import { ComponentProps } from 'lib/component-props';
 import { GraphQLSession } from 'src/types/session';
 import SessionItem from './SessionItem';
-
 import { useState } from 'react';
+import GoogleCaptchaWrapper from '../../google-captcha-wrapper';
+import axios from 'axios';
+
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
 type SessionsGridProps = ComponentProps & {
   fields: {
@@ -25,8 +28,21 @@ const SessionsGrid = (props: SessionsGridProps): JSX.Element => {
   const [noResults, setNoResults] = useState(false); // State to track if there are no results
   const [resultsType, setresultsType] = useState(false); // State to track if there are no results
 
+  const { executeRecaptcha } = useGoogleReCaptcha();
+
   const handleSubmit = async () => {
-    const componentQuery = `query(
+    if (!executeRecaptcha) {
+      console.error('ReCAPTCHA : not available');
+      return;
+    }
+
+    
+
+    let result = await executeRecaptcha('enquiryFormSubmit').then(async (gRecaptchaToken) => {
+      
+      console.log('ReCAPTCHA : key' + gRecaptchaToken);
+
+      const componentQuery = `query(
     $language: String!
     $orderByField: String!
     $orderDirection: OrderByDirection = ASC
@@ -113,44 +129,46 @@ const SessionsGrid = (props: SessionsGridProps): JSX.Element => {
   }
   
     `;
-    setNoResults(false);
-    noResults;
+      setNoResults(false);
+      noResults;
 
-    const queryVariables = {
-      language: 'en',
-      orderByField: 'name',
-      orderDirection: 'ASC',
-      searchKeyword: searchValue,
-    };
+      const queryVariables = {
+        language: 'en',
+        orderByField: 'name',
+        orderDirection: 'ASC',
+        searchKeyword: searchValue,
+      };
 
-    const dataToSend = {
-      componentQuery: componentQuery,
-      queryVariables: queryVariables,
-    };
+      const dataToSend = {
+        componentQuery: componentQuery,
+        queryVariables: queryVariables,
+        gRecaptchaToken: gRecaptchaToken
+      };
 
-    const response = await fetch('/api/gqlpublic', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(dataToSend), // Passing data in the body
-    });
+      const response = await fetch('/api/gqlpublic', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(dataToSend), // Passing data in the body
+      });
 
-    const result = await response.json();
+      const result = await response.json();
 
-    if (result?.search?.results) {
-      setSessions(result.search.results);
-      if (result.search.results.length === 0) {
-        setNoResults(true); // Set noResults to true if no sessions found
+      if (result?.search?.results) {
+        setSessions(result.search.results);
+        if (result.search.results.length === 0) {
+          setNoResults(true); // Set noResults to true if no sessions found
+        }
+      } else {
+        setNoResults(true); // Set noResults to true if no results are returned
       }
-    } else {
-      setNoResults(true); // Set noResults to true if no results are returned
-    }
 
-    setresultsType(true);
+      setresultsType(true);
 
-    console.log('ComponentQuery Result:SessionGrid');
-    console.log(result);
+      console.log('ComponentQuery Result:SessionGrid');
+      console.log(result);
+    });
   };
   const handleInputChange = (event: any) => {
     setSearchValue(event.target.value);
@@ -226,6 +244,7 @@ const SessionsGrid = (props: SessionsGridProps): JSX.Element => {
         {sessionsGrid}
         {pageEditingMissingDatasource}
       </div>
+      <script src="https://www.google.com/recaptcha/api.js?render=6LcG3e4aAAAAAB4LA6IsLetrSnrsX_9_YHkd3epL"></script>
     </>
   );
 };
