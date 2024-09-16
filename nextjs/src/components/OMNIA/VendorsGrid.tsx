@@ -24,7 +24,7 @@ const VendorsGrid = (props: VendorsGridProps): JSX.Element => {
   !hasVendors && console.warn('Missing Datasource Item');
 
   const businessLogicForRating = (str: number) => {
-    return '*'.repeat(str).substring(0, 5);
+    return '*'.repeat(str).substring(0, 30);
   };
 
   const pageEditingMissingDatasource = !hasVendors && isPageEditing && (
