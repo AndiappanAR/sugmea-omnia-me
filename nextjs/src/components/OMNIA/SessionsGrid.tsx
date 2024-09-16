@@ -28,7 +28,8 @@ const SessionsGrid = (props: SessionsGridProps): JSX.Element => {
 
   const { executeRecaptcha } = useGoogleReCaptcha();
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (event: { preventDefault: () => void; }) => {
+    event.preventDefault();
     if (!executeRecaptcha) {
       console.error('ReCAPTCHA : not available');
       return;
@@ -205,7 +206,7 @@ const SessionsGrid = (props: SessionsGridProps): JSX.Element => {
       <br />
       <div className="grid grid-cols-1 gap-4 border  px-8 py-8">
         <div>
-          <form className="max-w-sm mx-auto" action="javascript:void(0);">
+          <form className="max-w-sm mx-auto" action="#">
             <label
               htmlFor="rootFolder"
               className="mb-2 flex text-lg font-medium text-gray-900 dark:text-gray-300"
