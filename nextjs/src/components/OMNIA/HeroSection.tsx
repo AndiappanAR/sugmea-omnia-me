@@ -32,7 +32,7 @@ const HeroSection = (props: HeroProps): JSX.Element => {
 
   const withoutCdp = (
     <>
-      <div className="relative">
+      <div className="relative h-screen lg:h-auto">
         <Image field={props.fields.Hero} className="w-full h-full object-cover object-center" />
         <div className="typo_h4  main_container flex items-center  absolute inset-0 text-white  ">
           <div
