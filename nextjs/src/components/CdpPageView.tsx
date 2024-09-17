@@ -19,7 +19,7 @@ const CdpPageView = (): JSX.Element => {
   } = useSitecoreContext();
 
   /**
-   * Determines if the page view events should be turned off. 
+   * Determines if the page view events should be turned off.   
    * IMPORTANT: You should implement based on your cookie consent management solution of choice.
    * By default it is disabled in development mode
    */
